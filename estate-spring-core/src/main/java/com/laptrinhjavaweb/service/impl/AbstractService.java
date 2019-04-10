@@ -9,16 +9,16 @@ import java.util.List;
 
 public class AbstractService<D, E, ID> implements GenericService<D, ID> {
     protected GenericConverter<D, E> converter;
-    protected JpaRepository<E, ID> genericRepository;
+    protected JpaRepository<E, ID> repository;
 
-    public AbstractService(GenericConverter<D, E> converter, JpaRepository<E, ID> genericRepository) {
+    public AbstractService(GenericConverter<D, E> converter, JpaRepository<E, ID> repository) {
         this.converter = converter;
-        this.genericRepository = genericRepository;
+        this.repository = repository;
     }
 
     @Override
     public List<D> findAll() {
-        List<E> entityList = genericRepository.findAll();
+        List<E> entityList = repository.findAll();
         List<D> dtoList = new ArrayList<>();
 
 //        convert entity to dto and add it to dto list
@@ -31,7 +31,7 @@ public class AbstractService<D, E, ID> implements GenericService<D, ID> {
 
 //    @Override
 //    public List<D> findAllByProperties(Pageable pageable, List<Criterion> criterionList) {
-//        List<E> entityList = genericRepository.findAll();
+//        List<E> entityList = repository.findAll();
 //        List<D> dtoList = new ArrayList<>();
 //
 ////        convert entity to dto and add it to dto list
@@ -44,28 +44,28 @@ public class AbstractService<D, E, ID> implements GenericService<D, ID> {
 
     @Override
     public D findOneById(ID id) {
-        E entity = genericRepository.getOne(id);
+        E entity = repository.getOne(id);
         return converter.entityToDto(entity);
     }
 
     @Override
     public D save(D dto) throws Exception {
         E entity = converter.dtoToEntity(dto);
-        entity = genericRepository.save(entity);
+        entity = repository.save(entity);
         return converter.entityToDto(entity);
     }
 
 //    @Override
 //    public D update(D dto) throws Exception {
 //        E entity = converter.dtoToEntity(dto);
-//        genericRepository.is(entity);
+//        repository.is(entity);
 //        return converter.entityToDto(entity);
 //    }
 
     @Override
     public void deleteById(ID... ids) throws Exception {
         for (ID id : ids) {
-            genericRepository.deleteById(id);
+            repository.deleteById(id);
         }
     }
 }
