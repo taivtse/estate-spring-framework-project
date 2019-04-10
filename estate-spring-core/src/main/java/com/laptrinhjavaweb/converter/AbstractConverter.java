@@ -10,14 +10,16 @@ import java.lang.reflect.Type;
 public class AbstractConverter<D, E> implements GenericConverter<D, E> {
     private Class<D> dtoClass;
     private Class<E> entityClass;
-    private ModelMapper modelMapper = new ModelMapper();
+    private ModelMapper modelMapper;
 
-    AbstractConverter() {
+    AbstractConverter(ModelMapper modelMapper) {
         // set persistenceClass = T
         Type type = getClass().getGenericSuperclass();
         ParameterizedType parameterizedType = (ParameterizedType) type;
         dtoClass = (Class) parameterizedType.getActualTypeArguments()[0];
         entityClass = (Class) parameterizedType.getActualTypeArguments()[1];
+
+        this.modelMapper = modelMapper;
     }
 
     @Override
