@@ -1,6 +1,8 @@
 package com.laptrinhjavaweb.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "role")
 public class RoleEntity {
@@ -14,6 +16,9 @@ public class RoleEntity {
 
     @Column(name = "name")
     private String name;
+
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "roles")
+    private List<UserEntity> users = new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -37,5 +42,13 @@ public class RoleEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<UserEntity> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<UserEntity> users) {
+        this.users = users;
     }
 }

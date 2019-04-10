@@ -1,6 +1,8 @@
 package com.laptrinhjavaweb.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "user")
 public class UserEntity extends BaseEntity {
@@ -21,8 +23,11 @@ public class UserEntity extends BaseEntity {
     @Column(name = "status")
     private Boolean status;
 
-    @Column(name = "role_id")
-    private Integer roleId;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_role", joinColumns = {
+            @JoinColumn(name = "user_id", nullable = false)}, inverseJoinColumns = {
+            @JoinColumn(name = "role_id", nullable = false)})
+    private List<RoleEntity> roles = new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -64,11 +69,11 @@ public class UserEntity extends BaseEntity {
         this.fullName = fullName;
     }
 
-    public Integer getRoleId() {
-        return roleId;
+    public List<RoleEntity> getRoles() {
+        return roles;
     }
 
-    public void setRoleId(Integer roleId) {
-        this.roleId = roleId;
+    public void setRoles(List<RoleEntity> roles) {
+        this.roles = roles;
     }
 }
