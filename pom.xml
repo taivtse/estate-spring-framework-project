@@ -17,11 +17,10 @@
         <javax.servlet.jsp-api.version>2.3.3</javax.servlet.jsp-api.version>
         <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
         <jstl.version>1.2</jstl.version>
-        <spring.version>4.3.22.RELEASE</spring.version>
-        <spring-security.version>4.2.12.RELEASE</spring-security.version>
-        <spring-data-jpa.version>1.11.20.RELEASE</spring-data-jpa.version>
-        <spring-security.version>4.2.11.RELEASE</spring-security.version>
-        <hibernate.version>4.3.11.Final</hibernate.version>
+        <spring-framework.version>5.1.6.RELEASE</spring-framework.version>
+        <spring-data-jpa.version>2.1.6.RELEASE</spring-data-jpa.version>
+        <spring-security.version>5.1.5.RELEASE</spring-security.version>
+        <hibernate.version>5.4.2.Final</hibernate.version>
         <postgresql.version>42.2.5</postgresql.version>
         <modelmapper.version>1.1.3</modelmapper.version>
         <jackson.version>2.9.8</jackson.version>
@@ -62,28 +61,34 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>${spring.version}</version>
+            <version>${spring-framework.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- Spring ORM -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
-            <version>${spring.version}</version>
+            <version>${spring-framework.version}</version>
         </dependency>
 
         <!-- Spring Context -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>${spring.version}</version>
+            <version>${spring-framework.version}</version>
         </dependency>
 
         <!-- Spring Tx -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
-            <version>${spring.version}</version>
+            <version>${spring-framework.version}</version>
         </dependency>
 
         <!-- Spring Data JPA-->
@@ -111,11 +116,21 @@
         </dependency>
 
         <!-- Hibernate -->
+        <!--<dependency>-->
+            <!--<groupId>org.hibernate</groupId>-->
+            <!--<artifactId>hibernate-core</artifactId>-->
+            <!--<version>${hibernate.version}</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
+            <artifactId>hibernate-entitymanager</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.hibernate</groupId>-->
+            <!--<artifactId>hibernate-validator</artifactId>-->
+            <!--<version>${hibernate.validator}</version>-->
+        <!--</dependency>-->
 
         <!-- Postgresql -->
         <dependency>
@@ -141,7 +156,7 @@
         <!-- Slf4j Api -->
         <dependency>
             <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
+            <artifactId>slf4j-simple</artifactId>
             <version>${slf4j.version}</version>
         </dependency>
 
