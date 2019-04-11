@@ -28,8 +28,8 @@
         <slf4j.version>1.7.26</slf4j.version>
         <logback.version>1.2.3</logback.version>
         <jcl.slf4j.version>1.7.26</jcl.slf4j.version>
-        <testng.version>6.14.3</testng.version>
         <sitemesh.version>2.4.2</sitemesh.version>
+        <testng.version>6.14.3</testng.version>
 
         <java-version>1.8</java-version>
         <maven.compiler.source>${java-version}</maven.compiler.source>
@@ -159,13 +159,15 @@
             <artifactId>slf4j-simple</artifactId>
             <version>${slf4j.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.slf4j/jcl-over-slf4j -->
+
+        <!-- Jcl-over-slf4j -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
             <version>${jcl.slf4j.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
+
+        <!-- Logback-classic -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
@@ -173,6 +175,12 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- Sitemesh -->
+        <dependency>
+            <groupId>opensymphony</groupId>
+            <artifactId>sitemesh</artifactId>
+            <version>${sitemesh.version}</version>
+        </dependency>
 
         <!-- Testng -->
         <dependency>
