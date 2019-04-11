@@ -6,3 +6,5 @@
 
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <fmt:setBundle basename="messages" var="lang"/>
+
+<%@taglib prefix="security" uri="http://www.springframework.org/security/tags" %>

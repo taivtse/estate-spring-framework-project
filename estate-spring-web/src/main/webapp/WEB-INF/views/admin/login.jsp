@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/taglib.jsp" %>
-<c:url var="loginUrl" value="/auth/login"/>
+<c:url var="loginUrl" value="/j_spring_security_check"/>
 <html>
 <head>
     <title>
@@ -27,7 +27,7 @@
             <div class="form-group mb-lg">
                 <label>Username</label>
                 <div class="input-group input-group-icon">
-                    <input name="pojo.username" type="text" class="form-control input-lg" autofocus tabindex="1"/>
+                    <input name="j_username" type="text" class="form-control input-lg" autofocus tabindex="1"/>
                     <span class="input-group-addon">
 										<span class="icon icon-lg" style="display: inline-flex;align-items: center;">
 											<i class="fa fa-user"></i>
@@ -42,7 +42,7 @@
                     <a href="pages-recover-password.html" class="pull-right">Lost Password?</a>
                 </div>
                 <div class="input-group input-group-icon">
-                    <input name="pojo.password" type="password" class="form-control input-lg" tabindex="2"/>
+                    <input name="j_password" type="password" class="form-control input-lg" tabindex="2"/>
                     <span class="input-group-addon">
 										<span class="icon icon-lg" style="display: inline-flex;align-items: center;">
 											<i class="fa fa-lock"></i>

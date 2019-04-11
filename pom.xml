@@ -19,7 +19,7 @@
         <jstl.version>1.2</jstl.version>
         <spring-framework.version>5.1.6.RELEASE</spring-framework.version>
         <spring-data-jpa.version>2.1.6.RELEASE</spring-data-jpa.version>
-        <spring-security.version>5.1.5.RELEASE</spring-security.version>
+        <spring-security.version>3.2.10.RELEASE</spring-security.version>
         <spring-aspects.version>5.1.6.RELEASE</spring-aspects.version>
         <hibernate.version>5.4.2.Final</hibernate.version>
         <postgresql.version>42.2.5</postgresql.version>

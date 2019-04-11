@@ -200,7 +200,12 @@
                          data-lock-picture="<c:url value='/template/admin/images/!logged-user.jpg'/>"/>
                 </figure>
                 <div class="profile-info" data-lock-name="John Doe" data-lock-email="johndoe@okler.com">
-                    <span class="name">${sessionScope.session_user.fullName}</span>
+                    <security:authorize access="isAuthenticated()">
+                    <span class="name">
+                            <security:authentication property="principal.fullName"/>
+                    </span>
+                        <span class="role"><security:authentication property="principal.authorities[0]"/></span>
+                    </security:authorize>
                 </div>
 
                 <i class="fa custom-caret"></i>
@@ -214,7 +219,8 @@
                             Profile</a>
                     </li>
                     <li>
-                        <a role="menuitem" tabindex="-1" href="/auth/logout"><i class="fa fa-power-off"></i>
+                        <a role="menuitem" tabindex="-1" href="<c:url value="/auth/logout"/>"><i
+                                class="fa fa-power-off"></i>
                             <fmt:message bundle="${lang}" key="logout"/>
                         </a>
                     </li>
