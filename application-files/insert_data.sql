@@ -1,7 +1,7 @@
 set search_path to estatespringproject;
 
-insert into "role"(code,name) values('MANAGER','Quản trị hệ thống');
-insert into "role"(code,name) values('STAFF','Nhân viên');
+insert into role(code,name) values('MANAGER','Quản trị hệ thống');
+insert into role(code,name) values('STAFF','Nhân viên');
 
 insert into "user"(username,password,full_name,status)
 values('nguyenvana','$2a$10$/RUbuT9KIqk6f8enaTQiLOXzhnUkiwEJRdtzdrMXXwU7dgnLKTCYG','nguyễn văn a',true);

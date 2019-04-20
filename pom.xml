@@ -5,12 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.laptrinhjavaweb</groupId>
-    <artifactId>estate-spring-project</artifactId>
+    <artifactId>estate-springmvc-project</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>estate-spring-core</module>
-        <module>estate-spring-web</module>
+        <module>estate-core</module>
+        <module>estate-web</module>
     </modules>
 
     <properties>
