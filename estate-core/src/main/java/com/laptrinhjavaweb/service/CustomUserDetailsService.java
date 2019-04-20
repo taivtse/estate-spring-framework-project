@@ -1,9 +1,6 @@
 package com.laptrinhjavaweb.service;
 
 import com.laptrinhjavaweb.constant.ApiConstant;
-import com.laptrinhjavaweb.dto.AuthToken;
-import com.laptrinhjavaweb.dto.CustomUserDetail;
-import com.laptrinhjavaweb.dto.UserDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;

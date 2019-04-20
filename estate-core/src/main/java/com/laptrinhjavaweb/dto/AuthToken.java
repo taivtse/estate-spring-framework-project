@@ -1,23 +1,12 @@
 package com.laptrinhjavaweb.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
 public class AuthToken {
-
     private String token;
-
-    public AuthToken(){
-
-    }
-
-    public AuthToken(String token){
-        this.token = token;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
 }
