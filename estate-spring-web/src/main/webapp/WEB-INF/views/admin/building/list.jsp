@@ -14,7 +14,7 @@
 <html>
 <head>
     <title>
-        <fmt:message bundle="${lang}" key="building.management"/>
+        <fmt:message bundle="${lang}" key="building.page.title"/>
     </title>
     <content tag="specific_css">
         <link rel="stylesheet"
