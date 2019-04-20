@@ -7,6 +7,7 @@ import java.util.Collection;
 
 public class CustomUserDetail extends User {
     private String fullName;
+    private String token;
 
     public CustomUserDetail(String username, String password, Collection<? extends GrantedAuthority> authorities) {
         super(username, password, authorities);
@@ -18,5 +19,13 @@ public class CustomUserDetail extends User {
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

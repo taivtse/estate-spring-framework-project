@@ -1,18 +1,16 @@
 package com.laptrinhjavaweb.dto;
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
-public class UserDto {
+public class UserDto extends BaseDto{
     private Integer id;
     private String username;
     private String password;
     private String fullName;
     private Boolean status;
     private Integer roleId;
-    private Date createdDate;
-    private String createdBy;
-    private Date modifiedDate;
-    private String modifiedBy;
+    private List<RoleDto> roles = new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -62,35 +60,11 @@ public class UserDto {
         this.roleId = roleId;
     }
 
-    public Date getCreatedDate() {
-        return createdDate;
+    public List<RoleDto> getRoles() {
+        return roles;
     }
 
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public String getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public Date getModifiedDate() {
-        return modifiedDate;
-    }
-
-    public void setModifiedDate(Date modifiedDate) {
-        this.modifiedDate = modifiedDate;
-    }
-
-    public String getModifiedBy() {
-        return modifiedBy;
-    }
-
-    public void setModifiedBy(String modifiedBy) {
-        this.modifiedBy = modifiedBy;
+    public void setRoles(List<RoleDto> roles) {
+        this.roles = roles;
     }
 }

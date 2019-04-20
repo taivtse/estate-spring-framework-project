@@ -16,6 +16,11 @@
         <tracking-mode>COOKIE</tracking-mode>
     </session-config>
 
+    <!-- config to autowired http servlet request -->
+    <listener>
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>
+
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>

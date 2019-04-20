@@ -1,9 +1,13 @@
 package com.laptrinhjavaweb.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RoleDto {
     private Integer id;
     private String code;
     private String name;
+    private List<UserDto> users = new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -27,5 +31,13 @@ public class RoleDto {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<UserDto> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<UserDto> users) {
+        this.users = users;
     }
 }
