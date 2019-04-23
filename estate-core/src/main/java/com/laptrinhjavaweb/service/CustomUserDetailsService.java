@@ -1,6 +1,9 @@
 package com.laptrinhjavaweb.service;
 
 import com.laptrinhjavaweb.constant.ApiConstant;
+import com.laptrinhjavaweb.dto.AuthToken;
+import com.laptrinhjavaweb.dto.CustomUserDetail;
+import com.laptrinhjavaweb.dto.UserDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -66,9 +69,10 @@ public class CustomUserDetailsService implements UserDetailsService {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.setBearerAuth(token);
+        HttpEntity<UserDto> httpEntity = new HttpEntity<>(headers);
 
         ResponseEntity<UserDto> responseEntity = this.restTemplate
-                .getForEntity(uriComponentsBuilder.toUriString(), UserDto.class);
+                .exchange(uriComponentsBuilder.toUriString(), HttpMethod.GET, httpEntity, UserDto.class);
 
         if (responseEntity.getStatusCode() == HttpStatus.OK) {
             return responseEntity.getBody();

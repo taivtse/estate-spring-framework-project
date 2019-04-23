@@ -11,6 +11,7 @@ import java.util.Collection;
 @Setter
 public class CustomUserDetail extends User {
     private String fullName;
+    private String token;
 
     public CustomUserDetail(String username, String password, Collection<? extends GrantedAuthority> authorities) {
         super(username, password, authorities);

@@ -29,15 +29,14 @@
         </h2>
     </header>
     <div class="panel-body">
-        <form action="">
+        <form:form action="" method="get" modelAttribute="command">
             <div class="row">
                 <div class="col-xs-4">
                     <div class="form-group">
                         <label>
                             <fmt:message bundle="${lang}" key="building.name"/>
                         </label>
-                        <input type="text" name="search.name" value="${param['search.name']}"
-                               class="form-control">
+                        <form:input path="pojo.name" cssClass="form-control"/>
                     </div>
                 </div>
                 <div class="col-xs-4">
@@ -46,9 +45,7 @@
                             <fmt:message bundle="${lang}" key="building.buildingArea.from"/>
                         </label>
                         <div>
-                            <input type="number" name="search.buildingAreaFrom"
-                                   value="${param['search.buildingAreaFrom']}"
-                                   class="form-control">
+                            <form:input type="number" path="pojo.buildingAreaFrom" cssClass="form-control"/>
                         </div>
                     </div>
                 </div>
@@ -58,9 +55,7 @@
                             <fmt:message bundle="${lang}" key="building.buildingArea.to"/>
                         </label>
                         <div>
-                            <input type="number" name="search.buildingAreaTo"
-                                   value="${param['search.buildingAreaTo']}"
-                                   class="form-control">
+                            <form:input type="number" path="pojo.buildingAreaTo" cssClass="form-control"/>
                         </div>
                     </div>
                 </div>
@@ -73,13 +68,11 @@
                             <fmt:message bundle="${lang}" key="building.district"/>
                         </label>
                         <div>
-                            <select data-plugin-selectTwo name="search.districtId" class="form-control populate"
-                                    id="district-select">
-                                <option value="0"><fmt:message bundle="${lang}" key="select.all"/></option>
-                                <c:forEach var="districtDto" items="${command.districtDtoList}">
-                                    <option value="${districtDto.id}" ${param['search.districtId'] eq districtDto.id ? 'selected' : ''}>${districtDto.name}</option>
-                                </c:forEach>
-                            </select>
+                            <form:select path="pojo.districtId" data-plugin-selectTwo="true"
+                                         cssClass="form-control" id="district-select">
+                                <form:option value="0"><fmt:message bundle='${lang}' key='select.all'/></form:option>
+                                <form:options items="${command.districtDtoList}" itemValue="id" itemLabel="name"/>
+                            </form:select>
                         </div>
                     </div>
                 </div>
@@ -89,9 +82,9 @@
                             <fmt:message bundle="${lang}" key="building.ward"/>
                         </label>
                         <div>
-                            <select data-plugin-selectTwo disabled name="search.wardId" class="form-control populate"
-                                    id="ward-select">
-                            </select>
+                            <form:select path="pojo.wardId" data-plugin-selectTwo="true" disabled="true"
+                                         cssClass="form-control" id="ward-select">
+                            </form:select>
                         </div>
                     </div>
                 </div>
@@ -101,8 +94,7 @@
                             <fmt:message bundle="${lang}" key="building.street"/>
                         </label>
                         <div>
-                            <input type="text" name="search.street" value="${param['search.street']}"
-                                   class="form-control">
+                            <form:input path="pojo.street" cssClass="form-control"/>
                         </div>
                     </div>
                 </div>
@@ -115,9 +107,7 @@
                             <fmt:message bundle="${lang}" key="building.managerName"/>
                         </label>
                         <div>
-                            <input type="text" name="search.managerName"
-                                   value="${param['search.managerName']}"
-                                   class="form-control">
+                            <form:input path="pojo.managerName" cssClass="form-control"/>
                         </div>
                     </div>
                 </div>
@@ -127,9 +117,7 @@
                             <fmt:message bundle="${lang}" key="building.managerPhone"/>
                         </label>
                         <div>
-                            <input type="text" name="search.managerPhone"
-                                   value="${param['search.managerPhone']}"
-                                   class="form-control">
+                            <form:input path="pojo.managerPhone" cssClass="form-control"/>
                         </div>
                     </div>
                 </div>
@@ -139,19 +127,10 @@
                             <fmt:message bundle="${lang}" key="building.staff"/>
                         </label>
                         <div class="myMultiSelect">
-                            <select class="form-control" name="search.staffArray"
-                                    multiple data-plugin-multiselect>
-                                <c:forEach var="staffDto" items="${command.staffDtoList}">
-                                    <c:set var="found" value="false" scope="request"/>
-                                    <c:forEach var="staffId" items="${paramValues['search.staffArray']}">
-                                        <c:if test="${staffId == staffDto.id}">
-                                            <c:set var="found" value="true" scope="request"/>
-                                        </c:if>
-                                    </c:forEach>
-
-                                    <option value="${staffDto.id}" ${found ? 'selected' : ''}>${staffDto.fullName}</option>
-                                </c:forEach>
-                            </select>
+                            <form:select path="pojo.staffArray" data-plugin-multiselect="true" multiple="true"
+                                         cssClass="form-control" items="${command.staffDtoList}" itemValue="id"
+                                         itemLabel="fullName">
+                            </form:select>
                         </div>
                     </div>
                 </div>
@@ -164,9 +143,7 @@
                             <fmt:message bundle="${lang}" key="building.rentArea.from"/>
                         </label>
                         <div>
-                            <input type="number" name="search.rentAreaFrom"
-                                   value="${param['search.rentAreaFrom']}"
-                                   class="form-control">
+                            <form:input type="number" path="pojo.rentAreaFrom" cssClass="form-control"/>
                         </div>
                     </div>
                 </div>
@@ -176,9 +153,7 @@
                             <fmt:message bundle="${lang}" key="building.rentArea.to"/>
                         </label>
                         <div>
-                            <input type="number" name="search.rentAreaTo"
-                                   value="${param['search.rentAreaTo']}"
-                                   class="form-control">
+                            <form:input type="number" path="pojo.rentAreaTo" cssClass="form-control"/>
                         </div>
                     </div>
                 </div>
@@ -188,9 +163,7 @@
                             <fmt:message bundle="${lang}" key="building.rentalCost.from"/>
                         </label>
                         <div>
-                            <input type="number" name="search.rentalCostFrom"
-                                   value="${param['search.rentalCostFrom']}"
-                                   class="form-control">
+                            <form:input type="number" path="pojo.rentalCostFrom" cssClass="form-control"/>
                         </div>
                     </div>
                 </div>
@@ -200,9 +173,7 @@
                             <fmt:message bundle="${lang}" key="building.rentalCost.to"/>
                         </label>
                         <div>
-                            <input type="number" name="search.rentalCostTo"
-                                   value="${param['search.rentalCostTo']}"
-                                   class="form-control">
+                            <form:input type="number" path="pojo.rentalCostTo" cssClass="form-control"/>
                         </div>
                     </div>
                 </div>
@@ -215,9 +186,7 @@
                             <fmt:message bundle="${lang}" key="building.numberOfBasement"/>
                         </label>
                         <div>
-                            <input type="number" name="search.numberOfBasement"
-                                   value="${param['search.numberOfBasement']}"
-                                   class="form-control">
+                            <form:input type="number" path="pojo.numberOfBasement" cssClass="form-control"/>
                         </div>
                     </div>
                 </div>
@@ -227,9 +196,7 @@
                             <fmt:message bundle="${lang}" key="building.direction"/>
                         </label>
                         <div>
-                            <input type="text" name="search.direction"
-                                   value="${param['search.direction']}"
-                                   class="form-control">
+                            <form:input path="pojo.direction" cssClass="form-control"/>
                         </div>
                     </div>
                 </div>
@@ -239,9 +206,7 @@
                             <fmt:message bundle="${lang}" key="building.level"/>
                         </label>
                         <div>
-                            <input type="text" name="search.level"
-                                   value="${param['search.level']}"
-                                   class="form-control">
+                            <form:input path="pojo.level" cssClass="form-control"/>
                         </div>
                     </div>
                 </div>
@@ -251,19 +216,10 @@
                             <fmt:message bundle="${lang}" key="building.type"/>
                         </label>
                         <div class="myMultiSelect">
-                            <select class="form-control" name="search.typeArray"
-                                    multiple data-plugin-multiselect>
-                                <c:forEach var="buildingType" items="${command.buildingTypeArray}">
-                                    <c:set var="found" value="false" scope="request"/>
-                                    <c:forEach var="typeId" items="${paramValues['search.typeArray']}">
-                                        <c:if test="${typeId == buildingType}">
-                                            <c:set var="found" value="true" scope="request"/>
-                                        </c:if>
-                                    </c:forEach>
-
-                                    <option value="${buildingType}" ${found ? 'selected' : ''}>${buildingType.typeName}</option>
-                                </c:forEach>
-                            </select>
+                            <form:select path="pojo.typeArray" data-plugin-multiselect="true" multiple="true"
+                                         cssClass="form-control" items="${command.buildingTypeArray}"
+                                         itemLabel="typeName">
+                            </form:select>
                         </div>
                     </div>
                 </div>
@@ -274,11 +230,11 @@
                     <fmt:message bundle="${lang}" key="search"/>
                     <i class="fa fa-search"></i>
                 </button>
-                <a href="/admin/building/list" type="reset" class="mb-xs btn btn-default">
+                <a href="<c:url value="/admin/building/list"/>" type="reset" class="mb-xs btn btn-default">
                     <fmt:message bundle="${lang}" key="reset"/>
                 </a>
             </div>
-        </form>
+        </form:form>
     </div>
 </section>
 <section class="panel panel-featured">
@@ -306,7 +262,7 @@
                 <tr>
                     <th class="nosort">
                         <div class="checkbox-custom checkbox-default">
-                            <input type="checkbox" id="chkCheckAll">
+                            <label for="chkCheckAll"></label><input type="checkbox" id="chkCheckAll">
                             <label></label>
                         </div>
                     </th>
